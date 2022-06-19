@@ -1,0 +1,1877 @@
+﻿<Window x:Class="Library_Manager.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library_Manager"
+        mc:Ignorable="d"
+        Height="720" Width="1200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
+    <Window.Background>
+        <ImageBrush/>
+    </Window.Background>
+
+    <Window.Clip>
+        <RectangleGeometry Rect="0,0,1200,720" RadiusX="8" RadiusY="8"/>
+    </Window.Clip>
+    <Grid Background="#fefefe">
+        <!--navigation left-->
+        <Border 
+            HorizontalAlignment="Left"
+            BorderThickness="0,0,1,0"
+            BorderBrush="#ccc"
+            Margin="0,160,0,0">
+            <StackPanel 
+                x:Name="tab"
+                Width="240"
+                Orientation="Vertical">
+                <StackPanel.Background>
+                    <ImageBrush ImageSource="/Sach.png"/>
+                </StackPanel.Background>
+
+                <!--btnBook-->
+                <Border
+                    BorderBrush="#ccc"
+                    BorderThickness="0"
+                    >
+                    <Button 
+                        x:Name="btnBook"
+                            Foreground="#4a4a4a"
+                            FontWeight="DemiBold"
+                            FontSize="20"
+                            Height="70"
+                            BorderThickness="0"
+                            Content="Sách"
+                            Cursor="Hand" Click="btnBook_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Null}" Margin="20,0,20,0"
+                            >
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc" Padding="32,0,0,0">
+                                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#f7f7f7" TargetName="Border"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--btnAuthor-->
+                <Border
+                    BorderBrush="#ccc"
+                    BorderThickness="0"
+                    >
+                    <Button 
+                        x:Name="btnAuthor"
+                            Foreground="#4a4a4a"
+                            FontWeight="DemiBold"
+                            FontSize="20"
+                            Height="70"
+                            BorderThickness="0"
+                            Content="Tác giả"
+                            Cursor="Hand" Click="btnAuthor_Click" HorizontalAlignment="Stretch" Background="{x:Null}" Width="200" Margin="20,0,20,0"
+                            >
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc" Padding="32,0,0,0">
+                                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#f7f7f7" TargetName="Border"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+
+                <!--btnPublisher-->
+                <Border
+                    BorderBrush="#ccc"
+                    BorderThickness="0"
+                    >
+                    <Button 
+                        x:Name="btnPublisher"
+                            Foreground="#4a4a4a"
+                            FontWeight="DemiBold"
+                            FontSize="20"
+                            Height="70"
+                            BorderThickness="0"
+                            Content="Nhà xuất bản"
+                            Cursor="Hand" Click="btnPublisher_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="{x:Null}" Margin="20,0,20,0"
+                            >
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc" Padding="32,0,0,0">
+                                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#f7f7f7" TargetName="Border"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+
+                <!--btnReader-->
+                <Border
+                    BorderBrush="#ccc"
+                    BorderThickness="0"
+                    >
+                    <Button 
+                        x:Name="btnReader"
+                            Foreground="#4a4a4a"
+                            FontWeight="DemiBold"
+                            FontSize="20"
+                            Height="70"
+                            BorderThickness="0"
+                            Content="Đọc giả"
+                            Cursor="Hand" Click="btnReader_Click" HorizontalAlignment="Stretch" Background="{x:Null}" Margin="20,0,20,0"
+                            >
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc" Padding="32,0,0,0">
+                                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#f7f7f7" TargetName="Border"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+
+                <!--btnReverseReturn-->
+                <Border
+                    BorderBrush="#ccc"
+                    BorderThickness="0"
+                    >
+                    <Button 
+                        x:Name="btnReverseReturn"
+                            Foreground="#4a4a4a"
+                            FontWeight="DemiBold"
+                            FontSize="20"
+                            Height="70"
+                            BorderThickness="0"
+                            Content="Mượn / Trả sách"
+                            Cursor="Hand" Click="btnReverseReturn_Click" HorizontalAlignment="Stretch" Background="{x:Null}" Margin="20,0,20,0"
+                            >
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc" Padding="32,0,0,0">
+                                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#f7f7f7" TargetName="Border"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+
+                <!--btnStaff-->
+                <Border
+                    BorderBrush="#ccc"
+                    BorderThickness="0"
+                    >
+                    <Button 
+                        x:Name="btnStaff"
+                            Foreground="#4a4a4a"
+                            FontWeight="DemiBold"
+                            FontSize="20"
+                            Height="70"
+                            BorderThickness="0"
+                            Content="Nhân viên"
+                            Cursor="Hand" Click="btnStaff_Click" HorizontalAlignment="Stretch" Background="{x:Null}" Margin="20,0,20,0"
+                            >
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc" Padding="32,0,0,0">
+                                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#f7f7f7" TargetName="Border"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+
+                <!--btnHelp-->
+                <Border
+                    BorderBrush="#ccc"
+                    BorderThickness="0"
+                    >
+                    <Button 
+                        x:Name="btnReport"
+                            Foreground="#4a4a4a"
+                            FontWeight="DemiBold"
+                            FontSize="20"
+                            Height="70"
+                            BorderThickness="0"
+                            Content="Hỗ trợ"
+                            Cursor="Hand" HorizontalAlignment="Stretch" Background="{x:Null}" Margin="20,0,20,0" Click="btnReport_Click"
+                            >
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc" Padding="32,0,0,0">
+                                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#f7f7f7" TargetName="Border"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+
+                <!--btnLogout-->
+                <Border
+                    BorderBrush="#ccc"
+                    BorderThickness="0"
+                    >
+                    <Button 
+                        x:Name="btnLogout"
+                            Foreground="#4a4a4a"
+                            FontWeight="DemiBold"
+                            FontSize="20"
+                            Height="70"
+                            BorderThickness="0"
+                            Content="Đăng xuất"
+                            Cursor="Hand" Click="btnLogout_Click" HorizontalAlignment="Stretch" Background="{x:Null}" Margin="20,0,20,0" Width="200"
+                            >
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc" Padding="32,0,0,0">
+                                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#f7f7f7" TargetName="Border"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+            </StackPanel>
+        </Border>
+
+
+        <!--navigation top-->
+        <Border 
+            VerticalAlignment="Top"
+            BorderThickness="0,0,0,1"
+            BorderBrush="#ccc">
+            <Grid x:Name="TB">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Sach_TB2.png"/>
+                </Grid.Background>
+                <!--background-->
+                <Canvas>
+
+                </Canvas>
+
+                <!--nav-->
+                <DockPanel 
+                    Height="158">
+                    <!--time-->
+                    <Grid Width="240">
+                        <Label
+                            x:Name="lbHours"
+                            FontSize="48"
+                            FontWeight="DemiBold"
+                            Foreground="#4a4a4a"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="64,32,0,0"
+                            Content="20:00"/>
+
+                        <Label
+                            x:Name="lbDate"
+                            FontSize="18"
+                            FontWeight="DemiBold"
+                            Foreground="#4a4a4a"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="49,96,0,0"
+                            Content="Thứ 5, 16/06/2022"/>
+                    </Grid>
+
+                    <!--header-->
+                    <Grid/>
+
+                </DockPanel>
+            </Grid>
+        </Border>
+
+
+        <!--content-->
+        <Border x:Name="GDBorder"
+            Margin="242,161,-2,-1" RenderTransformOrigin="0.498,0.476">
+            <Border.Background>
+                <ImageBrush ImageSource="/Docgiagd.png" Stretch="Uniform"/>
+            </Border.Background>
+            <Grid Height="560" VerticalAlignment="Bottom">
+                <!--tab book-->
+                <Grid x:Name="grvBook" Visibility="Visible">
+
+                    <!--Mã sách-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,16,0,0"
+                        Content="Mã sách"></Label>
+
+                    <TextBox
+                        x:Name="txtBookID"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,16,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Tên sách-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,48,0,0"
+                        Content="Tên sách"></Label>
+
+                    <TextBox
+                        x:Name="txtBookTitle"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,48,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"
+                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+
+                    <!--Thể loại-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,80,0,0"
+                        Content="Thể loại"></Label>
+
+                    <TextBox
+                        x:Name="txtBookCategory"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,80,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"
+                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+
+                    <!--Tác giả-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,112,0,0"
+                        Content="Tác giả"></Label>
+
+                    <TextBox
+                        x:Name="txtBookAuthor"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,112,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"
+                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Nhà xuất bản-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,144,0,0"
+                        Content="Nhà xuất bản"></Label>
+
+                    <TextBox
+                        x:Name="txtBookPublisher"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,144,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"
+                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Năm xuất bản-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,176,0,0"
+                        Content="Năm xuất bản"></Label>
+
+                    <TextBox
+                        x:Name="txtYearOfPublication"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,176,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"
+                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+
+                    <!--Giá-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,208,0,0"
+                        Content="Giá"></Label>
+
+                    <TextBox
+                        x:Name="txtBookPrice"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,208,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"
+                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Số lượng-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,240,0,0"
+                        Content="Số lượng"></Label>
+
+                    <TextBox
+                        x:Name="txtBookQuantity"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,240,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"
+                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Data-->
+                    <DataGrid x:Name="dgBook" Margin="0,332,1,0" Background="#FFC8F3FB" SelectedCellsChanged="dgBook_SelectedCellsChanged"/>
+                </Grid>
+
+                <!--tab author-->
+                <Grid x:Name="grvAuthor" Visibility="Hidden">
+                    <!--Mã tác giả-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="33,43,0,0"
+                        Content="Mã tác giả"></Label>
+
+                    <TextBox
+                        x:Name="txtAuthorID"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="139,44,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Tên tác giả-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="32,81,0,0"
+                        Content="Tên tác giả"></Label>
+
+                    <TextBox
+                        x:Name="txtAuthorName"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="139,83,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Data-->
+                    <DataGrid x:Name="dgAuthor" Margin="0,342,0,0" Background="#FFFFEBB7" SelectedCellsChanged="dgAuthor_SelectedCellsChanged"></DataGrid>
+                </Grid>
+
+
+                <!--tab Publisher-->
+                <Grid x:Name="grvPublisher" Visibility="Hidden">
+                    <!--Mã NXB-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,50,0,0"
+                        Content="Mã NXB"></Label>
+
+                    <TextBox
+                        x:Name="txtPublisherID"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,50,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Tên NXB-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,100,0,0"
+                        Content="Tên NXB"></Label>
+
+                    <TextBox
+                        x:Name="txtPublisherName"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,100,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Email-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,150,0,0"
+                        Content="Email"></Label>
+
+                    <TextBox
+                        x:Name="txtPublisherEmail"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,150,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Phone-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,200,0,0"
+                        Content="Số điện thoại"></Label>
+
+                    <TextBox
+                        x:Name="txtPublisherPhone"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,200,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Addr-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,250,0,0"
+                        Content="Địa chỉ"></Label>
+
+                    <TextBox
+                        x:Name="txtPublisherAddress"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,250,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <!--Data-->
+
+                    <DataGrid x:Name="dgPublisher" Margin="0,330,0,0" Background="#FFFFCEE8" SelectedCellsChanged="dgPublisher_SelectedCellsChanged"></DataGrid>
+                </Grid>
+
+
+                <!--tab reader-->
+                <Grid x:Name="grvReader"  Visibility="Hidden">
+                    <!--Mã đọc giả-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="23,16,0,0"
+                        Content="Mã đọc giả"></Label>
+
+                    <TextBox
+                        x:Name="txtReaderID"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="138,16,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Tên đọc giả-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="23,56,0,0"
+                        Content="Tên đọc giả"></Label>
+
+                    <TextBox
+                        x:Name="txtReaderName"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="138,56,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Sinh nhật-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="23,96,0,0"
+                        Content="Sinh nhật"></Label>
+
+                    <TextBox
+                        x:Name="txtReaderBirthDay"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="138,96,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Giới tính-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="23,136,0,0"
+                        Content="Giới tính"></Label>
+
+                    <TextBox
+                        x:Name="txtReaderSex"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="138,136,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--email đọc giả-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="24,176,0,0"
+                        Content="Email"></Label>
+
+                    <TextBox
+                        x:Name="txtReaderEmail"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="138,176,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--SDT doc gia-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="24,216,0,0"
+                        Content="Số điện thoại"></Label>
+
+                    <TextBox
+                        x:Name="txtReaderPhone"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="138,216,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Địa chỉ đọc giả-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="25,256,0,0"
+                        Content="Địa chỉ"></Label>
+
+                    <TextBox
+                        x:Name="txtReaderAddress"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="138,256,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    
+                    <!--Data-->
+                    <DataGrid x:Name="dgReader" Margin="0,320,0,0" Background="#FF66C6D2" SelectedCellsChanged="dgReader_SelectedCellsChanged"></DataGrid>
+                </Grid>
+
+
+                <!--tab reserve return-->
+                <Grid x:Name="grvReserveReturn" Visibility="Hidden">
+                    <!--Mã đăng ký phiếu mượn trả-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="12,16,0,0"
+                        Content="Mã đăng ký"></Label>
+
+                    <TextBox
+                        x:Name="txtReg_ID"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="136,15,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Mã đọc giả-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="12,47,0,0"
+                        Content="Mã đọc giả"></Label>
+
+                    <TextBox
+                        x:Name="txtReg_ReaderID"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="136,45,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Mã sách-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="12,76,0,0"
+                        Content="Mã sách"></Label>
+
+                    <TextBox
+                        x:Name="txtReg_BookID"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="136,76,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Ngày mượn-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="12,107,0,0"
+                        Content="Ngày mượn"></Label>
+
+                    <TextBox
+                        x:Name="txtReg_ReserveDate"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="136,106,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Ngày tới hạn-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="13,136,0,0"
+                        Content="Ngày tới hạn"></Label>
+
+                    <TextBox
+                        x:Name="txtReg_DueDate"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="136,136,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Ngày trả sách-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="12,168,0,0"
+                        Content="Ngày trả"></Label>
+
+                    <TextBox
+                        x:Name="txtReturnDate"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="136,166,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--NV cho mượn-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="12,197,0,0"
+                        Content="NV Cho mượn"></Label>
+
+                    <TextBox
+                        x:Name="txtReg_ReserveStaffID"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="136,196,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--NV nhận sách-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="12,228,0,0"
+                        Content="NV nhận sách"></Label>
+
+                    <TextBox
+                        x:Name="txtReg_ReturnStaffID"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="136,228,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <!--Data-->
+                    <DataGrid x:Name="dgReserveReturn" Margin="0,294,0,0" Background="#FFFAC58F" SelectedCellsChanged="dgReserveReturn_SelectedCellsChanged"></DataGrid>
+
+                </Grid>
+
+
+                <!--tab staff-->
+                <Grid x:Name="grvStaff"  Visibility="Hidden">
+                    <!--Mã nhân viên-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,16,0,0"
+                        Content="Mã nhân viên"></Label>
+
+                    <TextBox
+                        x:Name="txtStaffID"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,16,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Tên nhân viên-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,56,0,0"
+                        Content="Tên nhân viên"></Label>
+
+                    <TextBox
+                        x:Name="txtStaffName"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,56,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Ngày sinh-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,96,0,0"
+                        Content="Ngày sinh"></Label>
+
+                    <TextBox
+                        x:Name="txtStaffBirthday"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,96,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Giới tính-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,136,0,0"
+                        Content="Giới tính"></Label>
+
+                    <TextBox
+                        x:Name="txtStaffSex"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,136,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--email nhân viên-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,176,0,0"
+                        Content="Email"></Label>
+
+                    <TextBox
+                        x:Name="txtStaffEmail"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,176,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--SDT nhân viên-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,216,0,0"
+                        Content="Số điện thoại"></Label>
+
+                    <TextBox
+                        x:Name="txtStaffPhone"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,216,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+
+                    <!--Địa chỉ nhân viên-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,256,0,0"
+                        Content="Địa chỉ"></Label>
+
+                    <TextBox
+                        x:Name="txtStaffAddress"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,256,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Data-->
+                    <DataGrid x:Name="dgStaff" Margin="0,320,0,0" Background="#FFF8FF9A" SelectedCellsChanged="dgStaff_SelectedCellsChanged"></DataGrid>
+                </Grid>
+
+
+                <!--tab help-->
+                <Grid x:Name="grvHelp"  Visibility="Hidden">
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="24"
+                        FontWeight="DemiBold"
+                        Margin="32,64,0,0"
+                        Content="Mọi thắc mắc xin liên hệ:"></Label>
+
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="23"
+                        FontWeight="DemiBold"
+                        Margin="32,128,0,0"
+                        Content="SĐT: 093516274"></Label>
+
+
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="23"
+                        FontWeight="DemiBold"
+                        Margin="32,192,0,0"
+                        Content="Anh Đức - Quản lý thư viện"></Label>
+                </Grid>
+
+
+                <Button 
+                            x:Name="btnSearch"
+                            Foreground="#fefefe"
+                            FontWeight="DemiBold"
+                            FontSize="12"
+                            Width="52"
+                            BorderThickness="0"
+                            Content=""
+                            Cursor="Hand" HorizontalAlignment="Left"
+                            Margin="896,-5,0,480" Height="85" Click="btnSearch_Click"
+                            >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#44a232"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Background>
+                        <ImageBrush ImageSource="/search_more_100px.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+                <Button 
+                            x:Name="btnDelete"
+                            Foreground="#fefefe"
+                            FontWeight="DemiBold"
+                            FontSize="12"
+                            BorderThickness="0"
+                            Content=""
+                            Cursor="Hand"
+                            Margin="678,-5,230,0" RenderTransformOrigin="0.5,0.5" Width="52" Height="85" VerticalAlignment="Top" Click="btnDelete_Click"
+                            >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#44a232"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Delete_100px.png" Stretch="Uniform"/>
+                    </Button.Background>
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+                <Button 
+                            x:Name="btnChange"
+                            Foreground="#fefefe"
+                            FontWeight="DemiBold"
+                            FontSize="12"
+                            BorderThickness="0"
+                            Content=""
+                            Cursor="Hand"
+                            Margin="0,-6,306,0" Width="52" VerticalAlignment="Top" Height="85" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Click="btnChange_Click"
+                            >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#44a232"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Background>
+                        <ImageBrush ImageSource="/support_100px.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+                <Button 
+                            x:Name="btnAdd"
+                            Foreground="#fefefe"
+                            FontWeight="DemiBold"
+                            FontSize="12"
+                            BorderThickness="0"
+                            Content=""
+                            Cursor="Hand" Height="85" HorizontalAlignment="Left" VerticalAlignment="Top" Width="52" Margin="521,-7,0,0" Click="btnAdd_Click"
+                    
+                            >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#44a232"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Background>
+                        <ImageBrush ImageSource="/plus_+_100px.png" Stretch="Uniform" TileMode="None"/>
+                    </Button.Background>
+                </Button>
+                <Button 
+                           x:Name="btnClear"
+                            Foreground="#fefefe"
+                            FontWeight="DemiBold"
+                            FontSize="12"
+                            BorderThickness="0"
+                            Content=""
+                            Cursor="Hand" Height="85" HorizontalAlignment="Left" VerticalAlignment="Top" Width="52" Margin="759,-8,0,0" Click="btnClear_Click"
+                    
+                            >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#44a232"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Background>
+                        <ImageBrush ImageSource="/housekeeping_100px.png" Stretch="Uniform" TileMode="None"/>
+                    </Button.Background>
+                </Button>
+                <Button 
+                           x:Name="btnReload"
+                            Foreground="#fefefe"
+                            FontWeight="DemiBold"
+                            FontSize="12"
+                            BorderThickness="0"
+                            Content=""
+                            Cursor="Hand" Height="85" HorizontalAlignment="Left" VerticalAlignment="Top" Width="52" Margin="442,-6,0,0" Click="btnReload_Click"
+                    
+                            >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#44a232"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Background>
+                        <ImageBrush ImageSource="/iphone_spinner_100px.png" Stretch="Uniform" TileMode="None"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!--btnExit-->
+        <Border
+                        Background="#FFF04738"
+                        Margin="0,16,16,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        CornerRadius="12">
+            <Button
+                            x:Name="btnClose"
+                            Width="24"
+                            Height="24"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="#fefefe"
+                            FontWeight="Bold"
+                            Cursor="Hand"
+                            Content="X" Click="btnClose_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="#ccc">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Opacity" Value="0.6"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Border>
+
+    </Grid>
+</Window>
