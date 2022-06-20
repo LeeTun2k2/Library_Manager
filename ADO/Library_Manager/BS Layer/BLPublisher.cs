@@ -29,7 +29,6 @@ namespace Library_Manager.BSLayer
             {
                 string sqlString = $"Insert Into {tableName} Values('{Publisher_id}', N'{Publisher_name}', " +
                 $"'{Email}', '{Phone_no}', N'{Addr}')";
-                MessageBox.Show(sqlString, err);
                 return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
             }
             MessageBox.Show("Email không hợp lệ");

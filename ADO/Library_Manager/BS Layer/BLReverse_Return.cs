@@ -28,7 +28,6 @@ namespace Library_Manager.BSLayer
             string sqlString = $"Insert Into {tableName} Values('{Reg_id}', '{Reader_id}', '{Book_id}', " +
                 $"'{ReserveDate}', '{DueDate}', '{ReturnDate}', " +
                 $"'{ReserveStaff_id}', '{ReturnStaff_id}')";
-            //MessageBox.Show(sqlString);
             return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
         }
 

@@ -202,10 +202,10 @@ namespace Library_Manager
                     txtBookTitle.Text = book.Title.Trim();
                     txtBookAuthor.Text = book.AuthorId.Trim();
                     txtBookPublisher.Text = book.PublisherId.Trim();
-                    txtYearOfPublication.Text = book.YearOfPublication.ToString();
+                    txtYearOfPublication.Text = book.YearOfPublication.ToString().Trim();
                     txtBookCategory.Text = book.Category.Trim();
-                    txtBookPrice.Text = book.Price.ToString();
-                    txtBookQuantity.Text = book.Quantity.ToString();
+                    txtBookPrice.Text = book.Price.ToString().Trim();
+                    txtBookQuantity.Text = book.Quantity.ToString().Trim();
                 }
             }
             catch
@@ -222,8 +222,8 @@ namespace Library_Manager
 
                 if (author != null)
                 {
-                    txtAuthorID.Text = author.AuthorId.Trim();
-                    txtAuthorName.Text = author.AuthorName.Trim();
+                    txtAuthorID.Text = author.AuthorId.Trim().Trim();
+                    txtAuthorName.Text = author.AuthorName.Trim().Trim();
                 }
             }
             catch
@@ -436,46 +436,61 @@ namespace Library_Manager
         }
         private void addPublisher()
         {
-            try
+            if (txtPublisherEmail.Text.Contains('@'))
             {
-                Publisher publisher = new Publisher() { 
-                    PublisherId = txtPublisherID.Text.Trim(),
-                    PublisherName = txtPublisherName.Text.Trim(),
-                    PhoneNo = txtPublisherPhone.Text.Trim(),
-                    Addr = txtPublisherAddress.Text.Trim(),
-                    Email = txtPublisherEmail.Text.Trim()
-                };
-                publisher.Add();
-                loadDataPublisher();
+                try
+                {
+                    Publisher publisher = new Publisher()
+                    {
+                        PublisherId = txtPublisherID.Text.Trim(),
+                        PublisherName = txtPublisherName.Text.Trim(),
+                        PhoneNo = txtPublisherPhone.Text.Trim(),
+                        Addr = txtPublisherAddress.Text.Trim(),
+                        Email = txtPublisherEmail.Text.Trim()
+                    };
+                    publisher.Add();
+                    loadDataPublisher();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Email không hợp lệ");
             }
+            
 
         }
 
         private void addReader()
         {
-            try
+            if (txtReaderEmail.Text.Contains('@'))
             {
-                Reader reader = new Reader() { 
-                ReaderId = txtReaderID.Text.Trim(),
-                ReaderName = txtReaderName.Text.Trim(),
-                Addr = txtReaderAddress.Text.Trim(),
-                Birthday = DateTime.Parse(txtReaderBirthDay.Text.Trim()).Date,
-                Email = txtReaderEmail.Text.Trim(),
-                PhoneNo = txtReaderPhone.Text.Trim(),
-                Sex = txtReaderSex.Text.Trim()
-                };
-                reader.Add();
-                loadDataReader();
+                try
+                {
+                    Reader reader = new Reader() { 
+                    ReaderId = txtReaderID.Text.Trim(),
+                    ReaderName = txtReaderName.Text.Trim(),
+                    Addr = txtReaderAddress.Text.Trim(),
+                    Birthday = DateTime.Parse(txtReaderBirthDay.Text.Trim()).Date,
+                    Email = txtReaderEmail.Text.Trim(),
+                    PhoneNo = txtReaderPhone.Text.Trim(),
+                    Sex = txtReaderSex.Text.Trim()
+                    };
+                    reader.Add();
+                    loadDataReader();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Email không hợp lệ");
             }
-
         }
 
         private void addReverseReturn()
@@ -504,28 +519,36 @@ namespace Library_Manager
         }
         private void addStaff()
         {
-            try
+            if (txtStaffEmail.Text.Contains('@'))
             {
-                staff staff_ = new staff() { 
-                StaffId = txtStaffID.Text.Trim(),
-                StaffName = txtStaffName.Text.Trim(),
-                Addr = txtStaffAddress.Text.Trim(),
-                Birthday = DateTime.Parse(txtStaffBirthday.Text.Trim()),
-                Email = txtStaffEmail.Text.Trim(),
-                PhoneNo = txtStaffPhone.Text.Trim(),
-                Salary = "5000000",
-                Sex = txtStaffSex.Text.Trim(),
-                StartDate = DateTime.Now.Date
-                };
-                staff_.Add();
-                loadDataStaff();
+                try
+                {
+                    staff staff_ = new staff() { 
+                    StaffId = txtStaffID.Text.Trim(),
+                    StaffName = txtStaffName.Text.Trim(),
+                    Addr = txtStaffAddress.Text.Trim(),
+                    Birthday = DateTime.Parse(txtStaffBirthday.Text.Trim()),
+                    Email = txtStaffEmail.Text.Trim(),
+                    PhoneNo = txtStaffPhone.Text.Trim(),
+                    Salary = "5000000",
+                    Sex = txtStaffSex.Text.Trim(),
+                    StartDate = DateTime.Now.Date
+                    };
+                    staff_.Add();
+                    loadDataStaff();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Email không hợp lệ");
             }
 
-        }
+}
 
         #endregion
 
@@ -583,48 +606,56 @@ namespace Library_Manager
         }
         private void updatePublisher()
         {
-            try
+            if (txtPublisherEmail.Text.Contains('@'))
             {
-                Publisher publisher = new Publisher()
+                try
                 {
-                    PublisherId = txtPublisherID.Text.Trim(),
-                    PublisherName = txtPublisherName.Text.Trim(),
-                    PhoneNo = txtPublisherPhone.Text.Trim(),
-                    Addr = txtPublisherAddress.Text.Trim(),
-                    Email = txtPublisherEmail.Text.Trim()
-                };
-                publisher.Update();
-                loadDataPublisher();
+                    Publisher publisher = new Publisher()
+                    {
+                        PublisherId = txtPublisherID.Text.Trim(),
+                        PublisherName = txtPublisherName.Text.Trim(),
+                        PhoneNo = txtPublisherPhone.Text.Trim(),
+                        Addr = txtPublisherAddress.Text.Trim(),
+                        Email = txtPublisherEmail.Text.Trim()
+                    };
+                    publisher.Update();
+                    loadDataPublisher();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+            else
+                MessageBox.Show("Email không hợp lệ");
         }
 
         private void updateReader()
         {
-            try
-            {
-                Reader reader = new Reader()
+            if (txtReaderEmail.Text.Contains('@'))
+            { 
+                try
                 {
-                    ReaderId = txtReaderID.Text.Trim(),
-                    ReaderName = txtReaderName.Text.Trim(),
-                    Addr = txtReaderAddress.Text.Trim(),
-                    Birthday = DateTime.Parse(txtReaderBirthDay.Text.Trim()).Date,
-                    Email = txtReaderEmail.Text.Trim(),
-                    PhoneNo = txtReaderPhone.Text.Trim(),
-                    Sex = txtReaderSex.Text.Trim()
-                };
-                reader.Update();
-                loadDataReader();
+                    Reader reader = new Reader()
+                    {
+                        ReaderId = txtReaderID.Text.Trim(),
+                        ReaderName = txtReaderName.Text.Trim(),
+                        Addr = txtReaderAddress.Text.Trim(),
+                        Birthday = DateTime.Parse(txtReaderBirthDay.Text.Trim()).Date,
+                        Email = txtReaderEmail.Text.Trim(),
+                        PhoneNo = txtReaderPhone.Text.Trim(),
+                        Sex = txtReaderSex.Text.Trim()
+                    };
+                    reader.Update();
+                    loadDataReader();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+            else
+                MessageBox.Show("Email không hợp lệ");
         }
 
         private void updateReverseReturn()
@@ -653,27 +684,32 @@ namespace Library_Manager
         }
         private void updateStaff()
         {
-            try
-            {
-                staff staff_ = new staff()
+            if (txtStaffEmail.Text.Contains('@'))
+            { 
+                try
                 {
-                    StaffId = txtStaffID.Text.Trim(),
-                    StaffName = txtStaffName.Text.Trim(),
-                    Addr = txtStaffAddress.Text.Trim(),
-                    Birthday = DateTime.Parse(txtStaffBirthday.Text.Trim()),
-                    Email = txtStaffEmail.Text.Trim(),
-                    PhoneNo = txtStaffPhone.Text.Trim(),
-                    Salary = "5000000",
-                    Sex = txtStaffSex.Text.Trim(),
-                    StartDate = DateTime.Now.Date
-                };
-                staff_.Update();
-                loadDataStaff();
+                    staff staff_ = new staff()
+                    {
+                        StaffId = txtStaffID.Text.Trim(),
+                        StaffName = txtStaffName.Text.Trim(),
+                        Addr = txtStaffAddress.Text.Trim(),
+                        Birthday = DateTime.Parse(txtStaffBirthday.Text.Trim()),
+                        Email = txtStaffEmail.Text.Trim(),
+                        PhoneNo = txtStaffPhone.Text.Trim(),
+                        Salary = "5000000",
+                        Sex = txtStaffSex.Text.Trim(),
+                        StartDate = DateTime.Now.Date
+                    };
+                    staff_.Update();
+                    loadDataStaff();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            else
+                MessageBox.Show("Email không hợp lệ");
 
         }
 

@@ -17,10 +17,7 @@ namespace Library_Manager
     public partial class HomeWindow : Window
     {
         private LoginWindow loginWindow = null!;
-
-        private string normal_color = "#fefefe";
         private string hover_color = "#f7f7f7";
-        private string capture_color = "#e7e7e7";
 
         // Btn switch tab
         private Button btnCaptured = null!;
@@ -207,14 +204,14 @@ namespace Library_Manager
                 DataRow row = (dgBook.SelectedItem as DataRowView)?.Row!;
                 if (row != null)
                 {
-                    txtBookID.Text = row["Book_id"].ToString()!;
-                    txtBookTitle.Text = row["Title"].ToString()!;
-                    txtBookCategory.Text = row["Category"].ToString()!;
-                    txtBookAuthor.Text = row["Author_id"].ToString()!;
-                    txtBookPublisher.Text = row["Publisher_id"].ToString();
-                    txtYearOfPublication.Text = row["YearOfPublication"].ToString();
-                    txtBookPrice.Text = row["Price"].ToString()!;
-                    txtBookQuantity.Text = row["Quantity"].ToString()!;
+                    txtBookID.Text = row["Book_id"].ToString()!.Trim();
+                    txtBookTitle.Text = row["Title"].ToString()!.Trim();
+                    txtBookCategory.Text = row["Category"].ToString()!.Trim();
+                    txtBookAuthor.Text = row["Author_id"].ToString()!.Trim();
+                    txtBookPublisher.Text = row["Publisher_id"].ToString()!.Trim();
+                    txtYearOfPublication.Text = row["YearOfPublication"].ToString()!.Trim();
+                    txtBookPrice.Text = row["Price"].ToString()!.Trim();
+                    txtBookQuantity.Text = row["Quantity"].ToString()!.Trim();
                 }
             }
             catch
@@ -231,8 +228,8 @@ namespace Library_Manager
                 DataRow row = (dgAuthor.SelectedItem as DataRowView)?.Row!;
                 if (row != null)
                 {
-                    txtAuthorID.Text = row["Author_id"].ToString()!;
-                    txtAuthorName.Text = row["Author_name"].ToString()!;
+                    txtAuthorID.Text = row["Author_id"].ToString()!.Trim();
+                    txtAuthorName.Text = row["Author_name"].ToString()!.Trim();
                 }
             }
             catch
@@ -248,11 +245,11 @@ namespace Library_Manager
                 DataRow row = (dgPublisher.SelectedItem as DataRowView)?.Row!;
                 if (row != null)
                 {
-                    txtPublisherID.Text = row["Publisher_id"].ToString()!;
-                    txtPublisherName.Text = row["Publisher_name"].ToString()!;
-                    txtPublisherEmail.Text = row["Email"].ToString()!;
-                    txtPublisherPhone.Text = row["Phone_no"].ToString();
-                    txtPublisherAddress.Text = row["Addr"].ToString();
+                    txtPublisherID.Text = row["Publisher_id"].ToString()!.Trim();
+                    txtPublisherName.Text = row["Publisher_name"].ToString()!.Trim();
+                    txtPublisherEmail.Text = row["Email"].ToString()!.Trim();
+                    txtPublisherPhone.Text = row["Phone_no"].ToString()!.Trim();
+                    txtPublisherAddress.Text = row["Addr"].ToString()!.Trim();
                 }
             }
             catch
@@ -268,13 +265,13 @@ namespace Library_Manager
                 DataRow row = (dgReader.SelectedItem as DataRowView)?.Row!;
                 if (row != null)
                 {
-                    txtReaderID.Text = row["Reader_id"].ToString()!;
-                    txtReaderName.Text = row["Reader_name"].ToString()!;
-                    txtReaderBirthDay.Text = row["Birthday"].ToString()!;
-                    txtReaderSex.Text = row["Sex"].ToString();
-                    txtReaderEmail.Text = row["Email"].ToString();
-                    txtReaderPhone.Text = row["Phone_no"].ToString()!;
-                    txtReaderAddress.Text = row["Addr"].ToString()!;
+                    txtReaderID.Text = row["Reader_id"].ToString()!.Trim();
+                    txtReaderName.Text = row["Reader_name"].ToString()!.Trim();
+                    txtReaderBirthDay.Text = row["Birthday"].ToString()!.Trim();
+                    txtReaderSex.Text = row["Sex"].ToString()!.Trim();
+                    txtReaderEmail.Text = row["Email"].ToString()!.Trim();
+                    txtReaderPhone.Text = row["Phone_no"].ToString()!.Trim();
+                    txtReaderAddress.Text = row["Addr"].ToString()!.Trim();
                 }
             }
             catch
@@ -290,14 +287,14 @@ namespace Library_Manager
                 DataRow row = (dgReserveReturn.SelectedItem as DataRowView)?.Row!;
                 if (row != null)
                 {
-                    txtReg_ID.Text = row["Reg_id"].ToString()!;
-                    txtReg_ReaderID.Text = row["Reader_id"].ToString()!;
-                    txtReg_BookID.Text = row["Book_id"].ToString()!;
-                    txtReg_ReserveDate.Text = row["ReserveDate"].ToString();
-                    txtReg_DueDate.Text = row["DueDate"].ToString();
-                    txtReturnDate.Text = row["ReturnDate"].ToString()!;
-                    txtReg_ReserveStaffID.Text = row["ReserveStaff_id"].ToString()!;
-                    txtReg_ReturnStaffID.Text = row["ReturnStaff_id"].ToString()!;
+                    txtReg_ID.Text = row["Reg_id"].ToString()!.Trim();
+                    txtReg_ReaderID.Text = row["Reader_id"].ToString()!.Trim();
+                    txtReg_BookID.Text = row["Book_id"].ToString()!.Trim();
+                    txtReg_ReserveDate.Text = row["ReserveDate"].ToString()!.Trim();
+                    txtReg_DueDate.Text = row["DueDate"].ToString()!.Trim();
+                    txtReturnDate.Text = row["ReturnDate"].ToString()!.Trim();
+                    txtReg_ReserveStaffID.Text = row["ReserveStaff_id"].ToString()!.Trim();
+                    txtReg_ReturnStaffID.Text = row["ReturnStaff_id"].ToString()!.Trim();
                 }
             }
             catch
@@ -313,13 +310,13 @@ namespace Library_Manager
                 DataRow row = (dgStaff.SelectedItem as DataRowView)?.Row!;
                 if (row != null)
                 {
-                    txtStaffID.Text = row["Staff_id"].ToString()!;
-                    txtStaffName.Text = row["Staff_name"].ToString()!;
-                    txtStaffBirthday.Text = row["Birthday"].ToString()!;
-                    txtStaffSex.Text = row["Sex"].ToString();
-                    txtStaffEmail.Text = row["Email"].ToString();
-                    txtStaffPhone.Text = row["Phone_no"].ToString()!;
-                    txtStaffAddress.Text = row["Addr"].ToString()!;
+                    txtStaffID.Text = row["Staff_id"].ToString()!.Trim();
+                    txtStaffName.Text = row["Staff_name"].ToString()!.Trim();
+                    txtStaffBirthday.Text = row["Birthday"].ToString()!.Trim();
+                    txtStaffSex.Text = row["Sex"].ToString()!.Trim();
+                    txtStaffEmail.Text = row["Email"].ToString()!.Trim();
+                    txtStaffPhone.Text = row["Phone_no"].ToString()!.Trim();
+                    txtStaffAddress.Text = row["Addr"].ToString()!.Trim();
                 }
             }
             catch
@@ -403,6 +400,7 @@ namespace Library_Manager
                 DataSet ds = bBLStaff.Get();
                 dataTable = ds.Tables[0];
                 dgStaff.ItemsSource = ds.Tables[0].DefaultView;
+
 
             }
             catch (SqlException ex)
@@ -660,7 +658,8 @@ namespace Library_Manager
         {
             try
             {
-                if (bBLStaff.Update(txtStaffID.Text.Trim(),
+                if (!bBLStaff.Update(
+                    txtStaffID.Text.Trim(),
                     txtStaffName.Text.Trim(),
                     txtStaffBirthday.Text.Trim(),
                     txtStaffSex.Text.Trim(),

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using System.Data.SqlClient;
+﻿using System.Data;
 using Library_Manager.DBLayer;
 using System.Windows;
 
@@ -25,10 +19,14 @@ namespace Library_Manager.BSLayer
         public bool Add(string Staff_id, string Staff_name, string Birthday, string Sex, 
             string Email, string Phone_no, string Addr, string startDate ,string Salary, ref string err)
         {
-            string sqlString = $"Insert Into {tableName} Values('{Staff_id}', N'{Staff_name}'," +
-                $"'{Birthday}', N'{Sex}', '{Email}', '{Phone_no}', N'{Addr}', '{startDate}' ,'{Salary}')";
-            MessageBox.Show(sqlString);
-            return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
+            if (Email.Contains('@'))
+            {
+                string sqlString = $"Insert Into {tableName} Values('{Staff_id}', N'{Staff_name}'," +
+                    $"'{Birthday}', N'{Sex}', '{Email}', '{Phone_no}', N'{Addr}', '{startDate}' ,'{Salary}')";
+                return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
+            }
+            MessageBox.Show("Email không hợp lệ");
+            return false;
         }
 
         public bool Delete(string Staff_id, ref string err)
@@ -40,16 +38,21 @@ namespace Library_Manager.BSLayer
         public bool Update(string Staff_id, string Staff_name, string Birthday, string Sex,
             string Email, string Phone_no, string Addr, string Salary, ref string err)
         {
-            string sqlString = $"Update {tableName} Set " +
-                $"Staff_name=N'{Staff_name}', " +
-                $"Birthday='{Birthday}'," +
-                $"Sex=N'{Sex}'," +
-                $"Email='{Email}'," +
-                $"Phone_no='{Phone_no}'," +
-                $"Addr=N'{Addr}'," +
-                $"Salary={Salary} " +
-                $"Where Staff_id='{Staff_id}'";
-            return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
+            if (Email.Contains('@'))
+            {
+                string sqlString = $"Update {tableName} Set " +
+                    $"Staff_name=N'{Staff_name}', " +
+                    $"Birthday='{Birthday}'," +
+                    $"Sex=N'{Sex}'," +
+                    $"Email='{Email}'," +
+                    $"Phone_no='{Phone_no}'," +
+                    $"Addr=N'{Addr}'," +
+                    $"Salary={Salary} " +
+                    $"Where Staff_id='{Staff_id}'";
+                return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
+            }
+            MessageBox.Show("Email không hợp lệ");
+            return false;
         }
 
         public DataSet Search(string Staff_id, string Staff_name, string Birthday, string Sex,

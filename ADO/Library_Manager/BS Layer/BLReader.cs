@@ -25,9 +25,15 @@ namespace Library_Manager.BSLayer
         public bool Add(string Reader_id, string Reader_name, string Birthday, string Sex, 
             string Email, string Phone_no, string Addr, ref string err)
         {
-            string sqlString = $"Insert Into {tableName} Values('{Reader_id}', N'{Reader_name}'," +
-                $"'{Birthday}', N'{Sex}', '{Email}', '{Phone_no}', N'{Addr}')";
-            return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
+            if (Email.Contains('@'))
+            {
+                string sqlString = $"Insert Into {tableName} Values('{Reader_id}', N'{Reader_name}'," +
+    $"'{Birthday}', N'{Sex}', '{Email}', '{Phone_no}', N'{Addr}')";
+                return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
+            }
+            MessageBox.Show("Email không hợp lệ");
+            return false;
+
         }
 
         public bool Delete(string Reader_id, ref string err)
@@ -39,15 +45,20 @@ namespace Library_Manager.BSLayer
         public bool Update(string Reader_id, string Reader_name, string Birthday, string Sex,
             string Email, string Phone_no, string Addr, ref string err)
         {
-            string sqlString = $"Update {tableName} Set " +
-                $"Reader_name=N'{Reader_name}', " +
-                $"Birthday='{Birthday}'," +
-                $"Sex=N'{Sex}'," +
-                $"Email='{Email}'," +
-                $"Phone_no='{Phone_no}'," +
-                $"Addr=N'{Addr}' " +
-                $"Where Reader_id='{Reader_id}'";
-            return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
+            if (Email.Contains('@'))
+            {
+                string sqlString = $"Update {tableName} Set " +
+                    $"Reader_name=N'{Reader_name}', " +
+                    $"Birthday='{Birthday}'," +
+                    $"Sex=N'{Sex}'," +
+                    $"Email='{Email}'," +
+                    $"Phone_no='{Phone_no}'," +
+                    $"Addr=N'{Addr}' " +
+                    $"Where Reader_id='{Reader_id}'";
+                return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
+            }
+            MessageBox.Show("Email không hợp lệ");
+            return false;
         }
 
         public DataSet Search(string Reader_id, string Reader_name, string Birthday, string Sex,
