@@ -946,9 +946,9 @@ namespace Library_Manager
                 dataTable = ds.Tables[0];
                 dgBook.ItemsSource = ds.Tables[0].DefaultView;
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+
             }
         }
         
@@ -965,9 +965,9 @@ namespace Library_Manager
                 dataTable = ds.Tables[0];
                 dgAuthor.ItemsSource = ds.Tables[0].DefaultView;
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+
             }
         }
 
@@ -988,9 +988,9 @@ namespace Library_Manager
                 dataTable = ds.Tables[0];
                 dgPublisher.ItemsSource = ds.Tables[0].DefaultView;
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+
             }
         }
 
@@ -1013,9 +1013,9 @@ namespace Library_Manager
                 dataTable = ds.Tables[0];
                 dgReader.ItemsSource = ds.Tables[0].DefaultView;
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+
             }
         }
 
@@ -1039,9 +1039,9 @@ namespace Library_Manager
                 dataTable = ds.Tables[0];
                 dgReserveReturn.ItemsSource = ds.Tables[0].DefaultView;
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+
             }
         }
 
@@ -1066,9 +1066,9 @@ namespace Library_Manager
                 dataTable = ds.Tables[0];
                 dgStaff.ItemsSource = ds.Tables[0].DefaultView;
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+
             }
         }
         #endregion
