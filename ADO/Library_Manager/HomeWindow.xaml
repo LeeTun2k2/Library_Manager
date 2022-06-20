@@ -150,7 +150,7 @@
                             FontSize="20"
                             Height="70"
                             BorderThickness="0"
-                            Content="Đọc giả"
+                            Content="Độc giả"
                             Cursor="Hand" Click="btnReader_Click" HorizontalAlignment="Stretch" Background="{x:Null}" Margin="20,0,20,0"
                             >
                         <Button.Resources>
