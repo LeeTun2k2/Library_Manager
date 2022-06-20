@@ -36,7 +36,7 @@ namespace Library_Manager.BSLayer
         }
         
         public bool Update(string Staff_id, string Staff_name, string Birthday, string Sex,
-            string Email, string Phone_no, string Addr, string Salary, ref string err)
+            string Email, string Phone_no, string Addr, string StartDate, string Salary, ref string err)
         {
             if (Email.Contains('@'))
             {
@@ -47,6 +47,7 @@ namespace Library_Manager.BSLayer
                     $"Email='{Email}'," +
                     $"Phone_no='{Phone_no}'," +
                     $"Addr=N'{Addr}'," +
+                    $"StartDate='{StartDate}'," +
                     $"Salary={Salary} " +
                     $"Where Staff_id='{Staff_id}'";
                 return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref err);
@@ -56,7 +57,7 @@ namespace Library_Manager.BSLayer
         }
 
         public DataSet Search(string Staff_id, string Staff_name, string Birthday, string Sex,
-            string Email, string Phone_no, string Addr, string Salary, ref string err)
+            string Email, string Phone_no, string Addr, string StartDate, string Salary, ref string err)
         {
             string sqlString = $"select * from {tableName} Where     ";
             if (Staff_id != "")
@@ -73,6 +74,8 @@ namespace Library_Manager.BSLayer
                 sqlString += $"Phone_no = '{Phone_no}' and ";
             if (Addr != "")
                 sqlString += $"Addr = N'{Addr}' and ";
+            if (StartDate != "")
+                sqlString += $"StartDate = N'{StartDate}' and ";
             if (Salary != "")
                 sqlString += $"Salary = '{Salary}' and ";
             sqlString = sqlString.Substring(0, sqlString.Length - 4);

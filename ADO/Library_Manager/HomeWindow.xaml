@@ -382,7 +382,7 @@
             </Border.Background>
             <Grid Height="560" VerticalAlignment="Bottom">
                 <!--tab book-->
-                <Grid x:Name="grvBook" Visibility="Visible">
+                <Grid x:Name="grvBook" Visibility="Hidden">
 
                     <!--Mã sách-->
                     <Label 
@@ -1413,7 +1413,7 @@
                         Foreground="#4a4a4a"
                         FontSize="16"
                         FontWeight="DemiBold"
-                        Margin="16,56,0,0"
+                        Margin="16,46,0,0"
                         Content="Tên nhân viên"></Label>
 
                     <TextBox
@@ -1422,7 +1422,7 @@
                         HorizontalAlignment="Left"
                         Width="240"
                         Height="24"
-                        Margin="124,56,0,0"
+                        Margin="124,46,0,0"
                         Background="#eee"
                         BorderThickness="0"
                         VerticalContentAlignment="Center"
@@ -1445,7 +1445,7 @@
                         Foreground="#4a4a4a"
                         FontSize="16"
                         FontWeight="DemiBold"
-                        Margin="16,96,0,0"
+                        Margin="16,76,0,0"
                         Content="Ngày sinh"></Label>
 
                     <TextBox
@@ -1454,7 +1454,7 @@
                         HorizontalAlignment="Left"
                         Width="240"
                         Height="24"
-                        Margin="124,96,0,0"
+                        Margin="124,76,0,0"
                         Background="#eee"
                         BorderThickness="0"
                         VerticalContentAlignment="Center"
@@ -1476,7 +1476,7 @@
                         Foreground="#4a4a4a"
                         FontSize="16"
                         FontWeight="DemiBold"
-                        Margin="16,136,0,0"
+                        Margin="16,106,0,0"
                         Content="Giới tính"></Label>
 
                     <TextBox
@@ -1485,7 +1485,7 @@
                         HorizontalAlignment="Left"
                         Width="240"
                         Height="24"
-                        Margin="124,136,0,0"
+                        Margin="124,106,0,0"
                         Background="#eee"
                         BorderThickness="0"
                         VerticalContentAlignment="Center"
@@ -1507,7 +1507,7 @@
                         Foreground="#4a4a4a"
                         FontSize="16"
                         FontWeight="DemiBold"
-                        Margin="16,176,0,0"
+                        Margin="16,136,0,0"
                         Content="Email"></Label>
 
                     <TextBox
@@ -1516,7 +1516,7 @@
                         HorizontalAlignment="Left"
                         Width="240"
                         Height="24"
-                        Margin="124,176,0,0"
+                        Margin="124,136,0,0"
                         Background="#eee"
                         BorderThickness="0"
                         VerticalContentAlignment="Center"
@@ -1538,7 +1538,7 @@
                         Foreground="#4a4a4a"
                         FontSize="16"
                         FontWeight="DemiBold"
-                        Margin="16,216,0,0"
+                        Margin="16,166,0,0"
                         Content="Số điện thoại"></Label>
 
                     <TextBox
@@ -1547,7 +1547,7 @@
                         HorizontalAlignment="Left"
                         Width="240"
                         Height="24"
-                        Margin="124,216,0,0"
+                        Margin="124,166,0,0"
                         Background="#eee"
                         BorderThickness="0"
                         VerticalContentAlignment="Center"
@@ -1570,11 +1570,73 @@
                         Foreground="#4a4a4a"
                         FontSize="16"
                         FontWeight="DemiBold"
-                        Margin="16,256,0,0"
+                        Margin="16,196,0,0"
                         Content="Địa chỉ"></Label>
 
                     <TextBox
                         x:Name="txtStaffAddress"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,196,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Ngày vào làm-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,226,0,0"
+                        Content="Ngày vào làm"></Label>
+
+                    <TextBox
+                        x:Name="txtStaffStartDate"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Width="240"
+                        Height="24"
+                        Margin="124,226,0,0"
+                        Background="#eee"
+                        BorderThickness="0"
+                        VerticalContentAlignment="Center"
+                        FontSize="16"                        
+                        Foreground="#4a4a4a"
+                        >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                                <Setter Property="Padding" Value="16,0" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <!--Lương-->
+                    <Label 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Foreground="#4a4a4a"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Margin="16,256,0,0"
+                        Content="Lương"></Label>
+
+                    <TextBox
+                        x:Name="txtStaffSalary"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Left"
                         Width="240"

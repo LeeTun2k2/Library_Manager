@@ -312,6 +312,8 @@ namespace Library_Manager
                     txtStaffEmail.Text = staff_.Email.Trim();
                     txtStaffPhone.Text = staff_.PhoneNo.Trim();
                     txtStaffAddress.Text = staff_.Addr.Trim();
+                    txtStaffStartDate.Text = staff_.StartDate.ToShortDateString();
+                    txtStaffSalary.Text = staff_.Salary.Trim();
                 }
             }
             catch
@@ -530,9 +532,9 @@ namespace Library_Manager
                     Birthday = DateTime.Parse(txtStaffBirthday.Text.Trim()),
                     Email = txtStaffEmail.Text.Trim(),
                     PhoneNo = txtStaffPhone.Text.Trim(),
-                    Salary = "5000000",
+                    Salary = txtStaffSalary.Text.Trim(),
                     Sex = txtStaffSex.Text.Trim(),
-                    StartDate = DateTime.Now.Date
+                    StartDate = DateTime.Parse(txtStaffStartDate.Text.Trim())
                     };
                     staff_.Add();
                     loadDataStaff();
@@ -696,9 +698,10 @@ namespace Library_Manager
                         Birthday = DateTime.Parse(txtStaffBirthday.Text.Trim()),
                         Email = txtStaffEmail.Text.Trim(),
                         PhoneNo = txtStaffPhone.Text.Trim(),
-                        Salary = "5000000",
+                        Salary = txtStaffSalary.Text.Trim(),
                         Sex = txtStaffSex.Text.Trim(),
-                        StartDate = DateTime.Now.Date
+                        StartDate = DateTime.Parse(txtStaffStartDate.Text.Trim()),
+
                     };
                     staff_.Update();
                     loadDataStaff();
@@ -915,7 +918,9 @@ namespace Library_Manager
                     txtStaffSex.Text.Trim(),
                     txtStaffEmail.Text.Trim(),
                     txtStaffPhone.Text.Trim(),
-                    txtStaffAddress.Text.Trim()
+                    txtStaffAddress.Text.Trim(),
+                    txtStaffStartDate.Text.Trim(),
+                    txtStaffSalary.Text.Trim()
                     );
             }
             catch (Exception ex)

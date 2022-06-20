@@ -317,6 +317,9 @@ namespace Library_Manager
                     txtStaffEmail.Text = row["Email"].ToString()!.Trim();
                     txtStaffPhone.Text = row["Phone_no"].ToString()!.Trim();
                     txtStaffAddress.Text = row["Addr"].ToString()!.Trim();
+                    txtStaffStartDate.Text = row["StartDate"].ToString()!.Trim();
+                    txtStaffSalary.Text = row["Salary"].ToString()!.Trim();
+
                 }
             }
             catch
@@ -529,8 +532,8 @@ namespace Library_Manager
                     txtStaffEmail.Text.Trim(),
                     txtStaffPhone.Text.Trim(),
                     txtStaffAddress.Text.Trim(),
-                    "2022/6/18",
-                    "100000",
+                    txtStaffStartDate.Text.Trim(),
+                    txtStaffSalary.Text.Trim(),
                     ref err))
                     MessageBox.Show("ID đã tồn tại hoặc lỗi liên kết dữ liệu");
                 loadDataStaff();
@@ -666,7 +669,8 @@ namespace Library_Manager
                     txtStaffEmail.Text.Trim(),
                     txtStaffPhone.Text.Trim(),
                     txtStaffAddress.Text.Trim(),
-                    "5000000",
+                    txtStaffStartDate.Text.Trim(),
+                    txtStaffSalary.Text.Trim(),
                     ref err))
                     MessageBox.Show("Không tìm thấy ID hoặc nhập sai kiểu dữ liệu");
                 loadDataStaff();
@@ -902,7 +906,8 @@ namespace Library_Manager
                     txtStaffEmail.Text.Trim(),
                     txtStaffPhone.Text.Trim(),
                     txtStaffAddress.Text.Trim(),
-                    "", 
+                    txtStaffStartDate.Text.Trim(),
+                    txtStaffSalary.Text.Trim(), 
                     ref err);
                 dataTable = ds.Tables[0];
                 dgStaff.ItemsSource = ds.Tables[0].DefaultView;

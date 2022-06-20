@@ -82,7 +82,9 @@ namespace Library_Manager.Repository.Models
             string Sex,
             string Email,
             string Phone_no,
-            string Addr
+            string Addr,
+            string StartDate,
+            string Salary
             )
         {
             MoDbContext db = new MoDbContext();
@@ -94,7 +96,9 @@ namespace Library_Manager.Repository.Models
                 (Sex != "") ? (p.Sex.Trim() == Sex) : (true) &&
                 (Email != "") ? (p.Email.Trim() == Email) : (true) &&
                 (Phone_no != "") ? (p.PhoneNo.ToString().Trim() == Phone_no) : (true) &&
-                (Addr != "") ? (p.Addr.ToString().Trim() == Addr) : (true)
+                (Addr != "") ? (p.Addr.ToString().Trim() == Addr) : (true) &&
+                (StartDate != "") ? (p.StartDate.ToShortDateString() == DateTime.Parse(StartDate).ToShortDateString()) : (true) &&
+                (Salary != "") ? (p.Salary.Trim() == Salary) : (true) 
                 ).ToList();
         }
     }
