@@ -51,14 +51,10 @@ namespace Library_Manager.Repository.Models
         {
             MoDbContext context = new MoDbContext();
             AuthenticationSystem db = context.AuthenticationSystems.Where(p => p.StaffId == id).FirstOrDefault();
-            if (db != null)
-            {
                 //  context.Students.Attach(db);
                 context.AuthenticationSystems.Remove(db);
                 context.SaveChanges();
-            }
-            else
-                System.Windows.MessageBox.Show("Không tồn tại ID");
+
         }
 
         public static AuthenticationSystem getAuthentication(string username)

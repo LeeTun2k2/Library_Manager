@@ -53,14 +53,9 @@ namespace Library_Manager.Repository.Models
         {
             MoDbContext context = new MoDbContext();
             Publisher db = context.Publishers.Where(p => p.PublisherId == id).FirstOrDefault();
-            if (db != null)
-            {
                 //  context.Students.Attach(db);
                 context.Publishers.Remove(db);
                 context.SaveChanges();
-            }
-            else
-                MessageBox.Show("Không tồn tại ID");
         }
 
         public static List<Publisher> Search(

@@ -65,14 +65,9 @@ namespace Library_Manager.Repository.Models
         {
             MoDbContext context = new MoDbContext();
             staff db = context.staff.Where(p => p.StaffId == id).FirstOrDefault();
-            if (db != null)
-            {
                 //  context.Students.Attach(db);
                 context.staff.Remove(db);
                 context.SaveChanges();
-            }
-            else
-                MessageBox.Show("Không tồn tại ID");
         }
 
         public static List<staff> Search(

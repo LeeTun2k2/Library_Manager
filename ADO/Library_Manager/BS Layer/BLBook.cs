@@ -31,7 +31,7 @@ namespace Library_Manager.BSLayer
         
         public bool Update(string Book_id, string Title, string Category, string Author_id,
             string Publisher_id, string YearOfPublication, string Price, string Quantity, ref string err)
-        {
+        {            
             string sqlString = $"Update {tableName} Set " +
                 $"Title=N'{Title}', Category=N'{Category}', " +
                 $"Author_id='{Author_id}', Publisher_id='{Publisher_id}', " +

@@ -63,14 +63,9 @@ namespace Library_Manager.Repository.Models
         {
             MoDbContext context = new MoDbContext();
             ReverseReturn db = context.ReverseReturns.Where(p => p.RegId == id).FirstOrDefault();
-            if (db != null)
-            {
                 //  context.Students.Attach(db);
                 context.ReverseReturns.Remove(db);
                 context.SaveChanges();
-            }
-            else
-                MessageBox.Show("Không tồn tại ID");
         }
 
         public static List<ReverseReturn> Search(

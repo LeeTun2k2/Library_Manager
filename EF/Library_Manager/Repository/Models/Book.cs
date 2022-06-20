@@ -59,14 +59,10 @@ namespace Library_Manager.Repository.Models
         {
             MoDbContext context = new MoDbContext();
             Book db = context.Books.Where(p => p.BookId == id).FirstOrDefault();
-            if (db != null)
-            {
+
                 //  context.Students.Attach(db);
                 context.Books.Remove(db);
                 context.SaveChanges();
-            }
-            else
-                MessageBox.Show("Không tồn tại ID");
         }
 
         

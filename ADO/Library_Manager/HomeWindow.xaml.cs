@@ -189,7 +189,6 @@ namespace Library_Manager
                 DataSet ds = bLBook.Get();
                 dataTable = ds.Tables[0];
                 dgBook.ItemsSource = ds.Tables[0].DefaultView;
-
             }
             catch (SqlException ex)
             {
@@ -432,12 +431,14 @@ namespace Library_Manager
                     txtYearOfPublication.Text.Trim(), 
                     txtBookPrice.Text.Trim(), 
                     txtBookQuantity.Text.Trim(), ref err))
-                    MessageBox.Show("ID đã tồn tại hoặc lỗi liên kết dữ liệu");
+                    MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                else
+                    MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
                 loadDataBook();
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                
             }
 
         }
@@ -445,15 +446,16 @@ namespace Library_Manager
         {
             try
             {
-                if (!bLAuthor.Add(txtAuthorID.Text.Trim(), 
+                if (bLAuthor.Add(txtAuthorID.Text.Trim(), 
                     txtAuthorName.Text.Trim(),
                     ref err))
-                    MessageBox.Show("ID đã tồn tại hoặc lỗi liên kết dữ liệu");
+                    MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 loadDataAuthor();
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
             }
 
         }
@@ -461,18 +463,20 @@ namespace Library_Manager
         {
             try
             {
-                 if (!bLPublisher.Add(txtPublisherID.Text.Trim(),
+                 if (bLPublisher.Add(txtPublisherID.Text.Trim(),
                      txtPublisherName.Text.Trim(),
                      txtPublisherEmail.Text.Trim(),
                      txtPublisherPhone.Text.Trim(),
                      txtPublisherAddress.Text.Trim(),
                      ref err))
-                    MessageBox.Show("ID đã tồn tại hoặc lỗi liên kết dữ liệu");
+                    MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                 else
+                    MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 loadDataPublisher();
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                
             }
 
         }
@@ -481,7 +485,7 @@ namespace Library_Manager
         {
             try
             {
-                if (!bBLReader.Add(txtReaderID.Text.Trim(),
+                if (bBLReader.Add(txtReaderID.Text.Trim(),
                     txtReaderName.Text.Trim(),
                     txtReaderBirthDay.Text.Trim(),
                     txtReaderSex.Text.Trim(),
@@ -489,12 +493,15 @@ namespace Library_Manager
                     txtReaderPhone.Text.Trim(),
                     txtReaderAddress.Text.Trim(),
                     ref err))
-                    MessageBox.Show("ID đã tồn tại hoặc lỗi liên kết dữ liệu");
+                    MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 loadDataReader();
+                
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                
             }
 
         }
@@ -503,7 +510,7 @@ namespace Library_Manager
         {
             try
             {
-                if (!bBLReverseReturn.Add(txtReg_ID.Text.Trim(),
+                if (bBLReverseReturn.Add(txtReg_ID.Text.Trim(),
                     txtReg_ReaderID.Text.Trim(),
                     txtReg_BookID.Text.Trim(),
                     txtReg_ReserveDate.Text.Trim(),
@@ -512,12 +519,14 @@ namespace Library_Manager
                     txtReg_ReserveStaffID.Text.Trim(),
                     txtReg_ReturnStaffID.Text.Trim(),
                     ref err))
-                    MessageBox.Show("ID đã tồn tại hoặc lỗi liên kết dữ liệu");
+                    MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+
                 loadDataReverseReturn();
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
             }
 
         }
@@ -525,7 +534,7 @@ namespace Library_Manager
         {
             try
             {
-                if (!bBLStaff.Add(txtStaffID.Text.Trim(),
+                if (bBLStaff.Add(txtStaffID.Text.Trim(),
                     txtStaffName.Text.Trim(),
                     txtStaffBirthday.Text.Trim(),
                     txtStaffSex.Text.Trim(),
@@ -535,12 +544,13 @@ namespace Library_Manager
                     txtStaffStartDate.Text.Trim(),
                     txtStaffSalary.Text.Trim(),
                     ref err))
-                    MessageBox.Show("ID đã tồn tại hoặc lỗi liên kết dữ liệu");
+                    MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 loadDataStaff();
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
             }
 
         }
@@ -554,131 +564,204 @@ namespace Library_Manager
 
 
         #region update data
+        private bool checkID(string id)
+        {
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                if (id == dataTable.Rows[i][0].ToString()!.Trim())
+                    return true;
+            }
+            return false;
+        }
 
         private void updateBook()
         {
-            try
+            if (checkID(txtBookID.Text.Trim()))
             {
-                if (!bLBook.Update(txtBookID.Text.Trim(), 
-                    txtBookTitle.Text.Trim(), 
-                    txtBookCategory.Text.Trim(), 
-                    txtBookAuthor.Text.Trim(), 
-                    txtBookPublisher.Text.Trim(), 
-                    txtYearOfPublication.Text.Trim(), 
-                    txtBookPrice.Text.Trim(), 
-                    txtBookQuantity.Text.Trim(), ref err))
-                    MessageBox.Show("Không tìm thấy ID hoặc nhập sai kiểu dữ liệu");
-                loadDataBook();
+                try
+                {
+                    if (bLBook.Update(txtBookID.Text.Trim(),
+                        txtBookTitle.Text.Trim(),
+                        txtBookCategory.Text.Trim(),
+                        txtBookAuthor.Text.Trim(),
+                        txtBookPublisher.Text.Trim(),
+                        txtYearOfPublication.Text.Trim(),
+                        txtBookPrice.Text.Trim(),
+                        txtBookQuantity.Text.Trim(), ref err))
+                        MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    loadDataBook();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
+
 
         }
 
         private void updateAuthor()
         {
-            try
+            if (checkID(txtAuthorID.Text.Trim()))
             {
-                if (!bLAuthor.Update(txtAuthorID.Text.Trim(), txtAuthorName.Text.Trim(), ref err))
-                    MessageBox.Show("Không tìm thấy ID hoặc nhập sai kiểu dữ liệu");
-                loadDataAuthor();
+                try
+                {
+                    if (bLAuthor.Update(txtAuthorID.Text.Trim(), txtAuthorName.Text.Trim(), ref err))
+                        MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    loadDataAuthor();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-            }
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
 
+            }
         }
 
         private void updatePublisher()
         {
-            try
-            {
-                if (!bLPublisher.Update(txtPublisherID.Text.Trim(),
-                    txtPublisherName.Text.Trim(),
-                    txtPublisherEmail.Text.Trim(),
-                    txtPublisherPhone.Text.Trim(),
-                    txtPublisherAddress.Text.Trim(),
-                    ref err))
-                    MessageBox.Show("Không tìm thấy ID hoặc nhập sai kiểu dữ liệu");
-                loadDataPublisher();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
 
+            if (checkID(txtPublisherID.Text.Trim()))
+            {
+                try
+                {
+                    if (bLPublisher.Update(txtPublisherID.Text.Trim(),
+                        txtPublisherName.Text.Trim(),
+                        txtPublisherEmail.Text.Trim(),
+                        txtPublisherPhone.Text.Trim(),
+                        txtPublisherAddress.Text.Trim(),
+                        ref err))
+                        MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    loadDataPublisher();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
         }
 
         private void updateReader()
         {
-            try
+            if (checkID(txtReaderID.Text.Trim()))
             {
-                if (!bBLReader.Update(txtReaderID.Text.Trim(),
-                    txtReaderName.Text.Trim(),
-                    txtReaderBirthDay.Text.Trim(),
-                    txtReaderSex.Text.Trim(),
-                    txtReaderEmail.Text.Trim(),
-                    txtReaderEmail.Text.Trim(),
-                    txtReaderAddress.Text.Trim(),
-                    ref err))
-                    MessageBox.Show("Không tìm thấy ID hoặc nhập sai kiểu dữ liệu");
-                loadDataReader();
+                try
+                {
+                    if (bBLReader.Update(txtReaderID.Text.Trim(),
+                        txtReaderName.Text.Trim(),
+                        txtReaderBirthDay.Text.Trim(),
+                        txtReaderSex.Text.Trim(),
+                        txtReaderEmail.Text.Trim(),
+                        txtReaderEmail.Text.Trim(),
+                        txtReaderAddress.Text.Trim(),
+                        ref err))
+                        MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    loadDataReader();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
+            
 
         }
 
         private void updateReverseReturn()
         {
-            try
+            if (checkID(txtReg_ID.Text.Trim()))
             {
-                if (!bBLReverseReturn.Update(txtReg_ID.Text.Trim(),
-                    txtReg_ReaderID.Text.Trim(),
-                    txtReg_BookID.Text.Trim(),
-                    txtReg_ReserveDate.Text.Trim(),
-                    txtReg_DueDate.Text.Trim(),
-                    txtReturnDate.Text.Trim(),
-                    txtReg_ReserveStaffID.Text.Trim(),
-                    txtReg_ReturnStaffID.Text.Trim(),
-                    ref err))
-                    MessageBox.Show("Không tìm thấy ID hoặc nhập sai kiểu dữ liệu");
-                loadDataReverseReturn();
+                try
+                {
+                    if (bBLReverseReturn.Update(txtReg_ID.Text.Trim(),
+                        txtReg_ReaderID.Text.Trim(),
+                        txtReg_BookID.Text.Trim(),
+                        txtReg_ReserveDate.Text.Trim(),
+                        txtReg_DueDate.Text.Trim(),
+                        txtReturnDate.Text.Trim(),
+                        txtReg_ReserveStaffID.Text.Trim(),
+                        txtReg_ReturnStaffID.Text.Trim(),
+                        ref err))
+                        MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    loadDataReverseReturn();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
+            
 
         }
 
         private void updateStaff()
         {
-            try
+            if (checkID(txtStaffID.Text.Trim()))
             {
-                if (!bBLStaff.Update(
-                    txtStaffID.Text.Trim(),
-                    txtStaffName.Text.Trim(),
-                    txtStaffBirthday.Text.Trim(),
-                    txtStaffSex.Text.Trim(),
-                    txtStaffEmail.Text.Trim(),
-                    txtStaffPhone.Text.Trim(),
-                    txtStaffAddress.Text.Trim(),
-                    txtStaffStartDate.Text.Trim(),
-                    txtStaffSalary.Text.Trim(),
-                    ref err))
-                    MessageBox.Show("Không tìm thấy ID hoặc nhập sai kiểu dữ liệu");
-                loadDataStaff();
+                try
+                {
+                    if (bBLStaff.Update(
+                        txtStaffID.Text.Trim(),
+                        txtStaffName.Text.Trim(),
+                        txtStaffBirthday.Text.Trim(),
+                        txtStaffSex.Text.Trim(),
+                        txtStaffEmail.Text.Trim(),
+                        txtStaffPhone.Text.Trim(),
+                        txtStaffAddress.Text.Trim(),
+                        txtStaffStartDate.Text.Trim(),
+                        txtStaffSalary.Text.Trim(),
+                        ref err))
+                        MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    loadDataStaff();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
+
 
         }
 
@@ -696,75 +779,145 @@ namespace Library_Manager
         #region delete
         private void deleteBook()
         {
-            try
+            if (checkID(txtBookID.Text.Trim()))
             {
-                bLBook.Delete(txtBookID.Text, ref err);
-                loadDataBook();
+                MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (res == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        bLBook.Delete(txtBookID.Text, ref err);
+                        loadDataBook();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void deleteAuthor()
         {
-            try
+            if (checkID(txtAuthorID.Text.Trim()))
             {
-                bLAuthor.Delete(txtAuthorID.Text.Trim(), ref err);
-                loadDataAuthor();
+                MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (res == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        bLAuthor.Delete(txtAuthorID.Text.Trim(), ref err);
+                        loadDataAuthor();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-            }
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
+            }            
         }
         private void deletePublisher()
         {
-            try
+            if (checkID(txtPublisherID.Text.Trim()))
             {
-                bLPublisher.Delete(txtPublisherID.Text, ref err);
-                loadDataPublisher();
+                MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (res == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        bLPublisher.Delete(txtPublisherID.Text, ref err);
+                        loadDataPublisher();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void deleteReader()
         {
-            try
+            if (checkID(txtReaderID.Text.Trim()))
             {
-                bBLReader.Delete(txtReaderID.Text, ref err);
-                loadDataReader();
+                MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (res == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        bBLReader.Delete(txtReaderID.Text, ref err);
+                        loadDataReader();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
         }
         private void deleteReverseReturn()
         {
-            try
+            if (checkID(txtReaderID.Text.Trim()))
             {
-                bBLReverseReturn.Delete(txtReg_ID.Text, ref err);
-                loadDataReverseReturn();
+                MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (res == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        bBLReverseReturn.Delete(txtReg_ID.Text, ref err);
+                        loadDataReverseReturn();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-            }
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
+            }            
         }
         private void deleteStaff()
         {
-            try
+            if (checkID(txtReaderID.Text.Trim()))
             {
-                bBLStaff.Delete(txtStaffID.Text, ref err);
-                loadDataStaff();
+                MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (res == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        bBLStaff.Delete(txtStaffID.Text, ref err);
+                        loadDataStaff();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ID không tồn tại", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
         }
 
         #endregion

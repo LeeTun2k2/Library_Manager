@@ -382,7 +382,7 @@
             </Border.Background>
             <Grid Height="560" VerticalAlignment="Bottom">
                 <!--tab book-->
-                <Grid x:Name="grvBook" Visibility="Hidden">
+                <Grid x:Name="grvBook" Visibility="Visible">
 
                     <!--Mã sách-->
                     <Label 

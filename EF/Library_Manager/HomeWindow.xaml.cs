@@ -397,8 +397,6 @@ namespace Library_Manager
         {
             try
             {
-                //int YearOfPublication;
-                //int.TryParse(txtYearOfPublication.Text, out YearOfPublication);
                 Book book = new Book(){
                     BookId = txtBookID.Text.Trim(),
                     Title = txtBookTitle.Text.Trim(),
@@ -411,10 +409,11 @@ namespace Library_Manager
                 };
                 book.Add();
                 loadDataBook();
+                MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -429,10 +428,11 @@ namespace Library_Manager
                 };
                 author.Add();
                 loadDataAuthor();
+                MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -452,15 +452,16 @@ namespace Library_Manager
                     };
                     publisher.Add();
                     loadDataPublisher();
+                    MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Email không hợp lệ");
+                if (txtPublisherEmail.Text != "") MessageBox.Show("Email không hợp lệ");
             }
             
 
@@ -483,15 +484,16 @@ namespace Library_Manager
                     };
                     reader.Add();
                     loadDataReader();
+                    MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Email không hợp lệ");
+                if (txtPublisherEmail.Text != "") MessageBox.Show("Email không hợp lệ");
             }
         }
 
@@ -512,10 +514,11 @@ namespace Library_Manager
                 };
                 reverseReturn.Add();
                 loadDataReverseReturn();
+                MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -538,16 +541,17 @@ namespace Library_Manager
                     };
                     staff_.Add();
                     loadDataStaff();
+                    MessageBox.Show("Thêm thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Thêm thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
             }
             else
             {
-                MessageBox.Show("Email không hợp lệ");
+                if (txtPublisherEmail.Text != "") MessageBox.Show("Email không hợp lệ");
             }
 
 }
@@ -580,11 +584,11 @@ namespace Library_Manager
                     Quantity = int.Parse(txtBookQuantity.Text.Trim())
                 };
                 book.Update();
-                loadDataBook();
+                MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -599,10 +603,11 @@ namespace Library_Manager
                 };
                 author.Update();
                 loadDataAuthor();
+                MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -622,14 +627,15 @@ namespace Library_Manager
                     };
                     publisher.Update();
                     loadDataPublisher();
+                    MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
-                MessageBox.Show("Email không hợp lệ");
+                if (txtPublisherEmail.Text != "") MessageBox.Show("Email không hợp lệ");
         }
 
         private void updateReader()
@@ -650,14 +656,15 @@ namespace Library_Manager
                     };
                     reader.Update();
                     loadDataReader();
+                    MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
-                MessageBox.Show("Email không hợp lệ");
+                if (txtPublisherEmail.Text != "") MessageBox.Show("Email không hợp lệ");
         }
 
         private void updateReverseReturn()
@@ -677,10 +684,11 @@ namespace Library_Manager
                 };
                 reverseReturn.Update();
                 loadDataReverseReturn();
+                MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -705,14 +713,15 @@ namespace Library_Manager
                     };
                     staff_.Update();
                     loadDataStaff();
+                    MessageBox.Show("Cập nhật thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Cập nhật thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
-                MessageBox.Show("Email không hợp lệ");
+                if (txtPublisherEmail.Text != "") MessageBox.Show("Email không hợp lệ");
 
         }
 
@@ -730,75 +739,110 @@ namespace Library_Manager
         #region delete
         private void deleteBook()
         {
-            try
+            MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
             {
-                Book.Delete(txtBookID.Text.Trim());
-                loadDataBook();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    Book.Delete(txtBookID.Text.Trim());
+                    loadDataBook();
+                    MessageBox.Show("Xóa thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
         private void deleteAuthor()
         {
-            try
+            MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
             {
-                Author.Delete(txtAuthorID.Text.Trim());  
-                loadDataAuthor();
+                try
+                {
+                    Author.Delete(txtAuthorID.Text.Trim());
+                    loadDataAuthor();
+                    MessageBox.Show("Xóa thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
         private void deletePublisher()
         {
-            try
+            MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
             {
-                Publisher.Delete(txtPublisherID.Text.Trim());
-                loadDataPublisher();
+                try
+                {
+                    Publisher.Delete(txtPublisherID.Text.Trim());
+                    loadDataPublisher();
+                    MessageBox.Show("Xóa thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
         }
         private void deleteReader()
         {
-            try
+            MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
             {
-                Reader.Delete(txtReaderID.Text.Trim());
-                loadDataReader();
+                try
+                {
+                    Reader.Delete(txtReaderID.Text.Trim());
+                    loadDataReader();
+                    MessageBox.Show("Xóa thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
         }
         private void deleteReverseReturn()
         {
-            try
+            MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
             {
-                ReverseReturn.Delete(txtReg_ID.Text.Trim());
-                loadDataReverseReturn();
+                try
+                {
+                    ReverseReturn.Delete(txtReg_ID.Text.Trim());
+                    loadDataReverseReturn();
+                    MessageBox.Show("Xóa thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
         private void deleteStaff()
         {
-            try
+            MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
             {
-                staff.Delete(txtStaffID.Text.Trim());
-                loadDataStaff();
+                try
+                {
+                    staff.Delete(txtStaffID.Text.Trim());
+                    loadDataStaff();
+                    MessageBox.Show("Xóa thành công!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Xóa thất bại!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
         }
 
         #endregion
