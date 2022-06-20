@@ -33,11 +33,6 @@ namespace Library_Manager
             this.loadTimer();
         }
 
-
-
-
-
-
         #region timer
         private void loadTimer()
         {
@@ -1040,6 +1035,8 @@ namespace Library_Manager
                     txtStaffEmail.Clear();
                     txtStaffPhone.Clear();
                     txtStaffAddress.Clear();
+            txtStaffSalary.Clear();
+            txtStaffStartDate.Clear();
         }
 
 

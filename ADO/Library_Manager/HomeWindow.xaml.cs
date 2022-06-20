@@ -897,7 +897,7 @@ namespace Library_Manager
         }
         private void deleteStaff()
         {
-            if (checkID(txtReaderID.Text.Trim()))
+            if (checkID(txtStaffID.Text.Trim()))
             {
                 MessageBoxResult res = MessageBox.Show("Bạn chắc chắn muốn xóa chứ ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (res == MessageBoxResult.Yes)
@@ -1061,6 +1061,7 @@ namespace Library_Manager
                     txtStaffAddress.Text.Trim(),
                     txtStaffStartDate.Text.Trim(),
                     txtStaffSalary.Text.Trim(), 
+
                     ref err);
                 dataTable = ds.Tables[0];
                 dgStaff.ItemsSource = ds.Tables[0].DefaultView;
@@ -1138,6 +1139,8 @@ namespace Library_Manager
                     txtStaffEmail.Clear();
                     txtStaffPhone.Clear();
                     txtStaffAddress.Clear();
+            txtStaffSalary.Clear();
+            txtStaffStartDate.Clear();
         }
 
 
